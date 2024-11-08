@@ -57,7 +57,7 @@
 
         /* メインコンテンツ */
         .container {
-            margin-left: 340px;
+            margin-left: 240px;
             padding: 20px;
             width: calc(100% - 260px);
             max-width: 1200px;
@@ -82,20 +82,44 @@
             border-radius: 8px;
             padding: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            text-align: center;
         }
 
         .day h3 {
             font-size: 16px;
             margin: 0;
             color: #333;
-            text-align: center;
         }
 
-        .time-slot {
-            padding: 8px;
+        /* ポップアップスタイル */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            z-index: 10;
+        }
+
+        .popup h3 {
+            text-align: center;
+            margin: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .popup .time-slot {
+            padding: 10px;
             margin: 5px 0;
             border-radius: 4px;
             text-align: center;
+            cursor: pointer;
         }
 
         .time-slot.available {
@@ -106,6 +130,24 @@
         .time-slot.booked {
             background-color: #e74c3c;
             color: #fff;
+        }
+
+        .popup-close {
+            text-align: right;
+            cursor: pointer;
+            color: #333;
+        }
+
+        /* 背景オーバーレイ */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 5;
         }
     </style>
 </head>
@@ -125,58 +167,87 @@
         </div>
     </div>
 
+    <!-- ポップアップ -->
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <div class="popup-close" onclick="closePopup()">×</div>
+        <h3 id="popupDate"></h3>
+        <div id="timeSlots">
+            <!-- JavaScriptで時間スロットを生成 -->
+        </div>
+    </div>
+
     <script>
         // サンプルデータ生成
         const sampleData = [
             { date: '2024-11-10', time: '10:00', name: '山田 太郎', task: '配管工事' },
-            { date: '2024-11-10', time: '13:00', name: '佐藤 花子', task: '水漏れ点検' },
+            { date: '2024-11-10', time: '10:00', name: '佐藤 花子', task: '水漏れ点検' },
             { date: '2024-11-11', time: '09:00', name: '田中 一郎', task: '電気配線修理' },
             // 他のデータは必要に応じて追加
         ];
 
-        // 予約データを日時ごとに整理
+        // 日付ごとの予約データを整理
         const reservations = {};
         sampleData.forEach(reservation => {
             if (!reservations[reservation.date]) reservations[reservation.date] = {};
-            reservations[reservation.date][reservation.time] = `${reservation.name} (${reservation.task})`;
+            if (!reservations[reservation.date][reservation.time]) reservations[reservation.date][reservation.time] = [];
+            reservations[reservation.date][reservation.time].push(`${reservation.name} (${reservation.task})`);
         });
 
         // カレンダー生成
         function generateCalendar() {
             const calendar = document.getElementById('calendar');
-            const daysInMonth = 30; // サンプルで30日分表示
-            const startHour = 9;
-            const endHour = 17;
-
+            const daysInMonth = 30;
             for (let day = 1; day <= daysInMonth; day++) {
                 const date = `2024-11-${String(day).padStart(2, '0')}`;
                 const dayDiv = document.createElement('div');
                 dayDiv.classList.add('day');
+                dayDiv.onclick = () => openPopup(date);
 
-                // 日付ヘッダー
                 const dayHeader = document.createElement('h3');
-                dayHeader.textContent = `${date}`;
+                dayHeader.textContent = date;
                 dayDiv.appendChild(dayHeader);
-
-                // 時間スロット
-                for (let hour = startHour; hour < endHour; hour++) {
-                    const time = `${String(hour).padStart(2, '0')}:00`;
-                    const timeSlot = document.createElement('div');
-                    timeSlot.classList.add('time-slot');
-
-                    if (reservations[date] && reservations[date][time]) {
-                        timeSlot.classList.add('booked');
-                        timeSlot.textContent = reservations[date][time];
-                    } else {
-                        timeSlot.classList.add('available');
-                        timeSlot.textContent = `${time} - 予約可`;
-                    }
-
-                    dayDiv.appendChild(timeSlot);
-                }
 
                 calendar.appendChild(dayDiv);
             }
+        }
+
+        // ポップアップを開く
+        function openPopup(date) {
+            document.getElementById('popupDate').textContent = `${date}の予約状況`;
+            const timeSlotsDiv = document.getElementById('timeSlots');
+            timeSlotsDiv.innerHTML = '';
+
+            const startHour = 9;
+            const endHour = 17;
+
+            for (let hour = startHour; hour < endHour; hour++) {
+                const time = `${String(hour).padStart(2, '0')}:00`;
+                const timeSlotDiv = document.createElement('div');
+                timeSlotDiv.classList.add('time-slot');
+
+                if (reservations[date] && reservations[date][time] && reservations[date][time].length === 2) {
+                    timeSlotDiv.classList.add('booked');
+                    timeSlotDiv.textContent = `${time} - 予約済 (${reservations[date][time].join(', ')})`;
+                } else if (reservations[date] && reservations[date][time]) {
+                    timeSlotDiv.classList.add('available');
+                    timeSlotDiv.textContent = `${time} - 空きあり (${reservations[date][time][0]})`;
+                } else {
+                    timeSlotDiv.classList.add('available');
+                    timeSlotDiv.textContent = `${time} - 予約可`;
+                }
+
+                timeSlotsDiv.appendChild(timeSlotDiv);
+            }
+
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        // ポップアップを閉じる
+        function closePopup() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('popup').style.display = 'none';
         }
 
         generateCalendar();
