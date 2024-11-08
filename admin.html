@@ -57,7 +57,7 @@
 
         /* メインコンテンツ */
         .container {
-            margin-left: 240px; /* サイドバーの幅分+スペース */
+            margin-left: 340px; /* サイドバーの幅分+スペース */
             padding: 30px;
             width: calc(100% - 260px);
             background-color: #fff;
@@ -224,5 +224,18 @@
         // 初期表示
         displayPage(currentPage);
     </script>
+    <script type="text/javascript">
+        (function(d, t) {
+            var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            v.onload = function() {
+              window.voiceflow.chat.load({
+                verify: { projectID: '670e1f9f435ac9f2c9af5c97' },
+                url: 'https://general-runtime.voiceflow.com',
+                versionID: 'production'
+              });
+            }
+            v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+        })(document, 'script');
+      </script>
 </body>
 </html>
