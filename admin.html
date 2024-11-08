@@ -59,7 +59,7 @@
         .container {
             margin-left: 340px;
             padding: 20px;
-            width: calc(100% - 260px);
+            width: calc(100% - 360px);
             max-width: 1200px;
         }
 
@@ -130,6 +130,11 @@
         .time-slot.booked {
             background-color: #e74c3c;
             color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
         }
 
         .popup-close {
@@ -228,7 +233,7 @@
 
                 if (reservations[date] && reservations[date][time] && reservations[date][time].length === 2) {
                     timeSlotDiv.classList.add('booked');
-                    timeSlotDiv.textContent = `${time} - 予約済 (${reservations[date][time].join(', ')})`;
+                    timeSlotDiv.innerHTML = `${time}<br>${reservations[date][time][0]}<br>${reservations[date][time][1]}`;
                 } else if (reservations[date] && reservations[date][time]) {
                     timeSlotDiv.classList.add('available');
                     timeSlotDiv.textContent = `${time} - 空きあり (${reservations[date][time][0]})`;
