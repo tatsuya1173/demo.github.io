@@ -57,14 +57,14 @@
 
         /* メインコンテンツ */
         .container {
-            margin-left: 260px; /* サイドバーの幅分+スペース */
+            margin-left: 240px; /* サイドバーの幅分+スペース */
             padding: 30px;
-            width: 100%;
-            max-width: 700px;
+            width: calc(100% - 260px);
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            margin-top: 40px;
+            margin-top: 20px;
+            max-width: 1200px;
         }
 
         h2 {
@@ -103,6 +103,27 @@
         .btn-cancel:hover {
             background-color: #c0392b;
         }
+
+        /* ページャーのスタイル */
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            padding: 10px 15px;
+            margin: 0 5px;
+            border: none;
+            background-color: #333;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .pagination button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
@@ -122,35 +143,86 @@
                     <th>予約日</th>
                     <th>時間</th>
                     <th>予約者名</th>
+                    <th>作業名</th>
                     <th>操作</th>
                 </tr>
             </thead>
             <tbody id="reservationTable">
-                <!-- サンプルデータ -->
-                <tr>
-                    <td>2024-11-10</td>
-                    <td>10:00</td>
-                    <td>山田 太郎</td>
-                    <td><button class="btn-cancel" onclick="cancelReservation(this)">キャンセル</button></td>
-                </tr>
-                <tr>
-                    <td>2024-11-11</td>
-                    <td>14:00</td>
-                    <td>佐藤 花子</td>
-                    <td><button class="btn-cancel" onclick="cancelReservation(this)">キャンセル</button></td>
-                </tr>
-                <!-- 新しいデータがJavaScriptで追加される予定 -->
+                <!-- JavaScriptで予約データを挿入 -->
             </tbody>
         </table>
+        <div class="pagination">
+            <button id="prevButton" onclick="prevPage()">前へ</button>
+            <span id="pageInfo"></span>
+            <button id="nextButton" onclick="nextPage()">次へ</button>
+        </div>
     </div>
 
     <script>
-        // キャンセルボタンを押した際に行を削除する機能
+        // サンプルデータ生成
+        const sampleData = [];
+        const tasks = ["配管工事", "水漏れ点検", "電気配線修理", "空調メンテナンス", "内装リフォーム"];
+        
+        for (let i = 1; i <= 50; i++) {
+            sampleData.push({
+                date: `2024-11-${String(i % 30 + 1).padStart(2, '0')}`,
+                time: `${String(9 + (i % 8)).padStart(2, '0')}:00`,
+                name: `予約者 ${i}`,
+                task: tasks[i % tasks.length]
+            });
+        }
+
+        // ページャー設定
+        let currentPage = 1;
+        const rowsPerPage = 10;
+
+        function displayPage(page) {
+            const table = document.getElementById("reservationTable");
+            table.innerHTML = "";
+
+            const start = (page - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            const paginatedData = sampleData.slice(start, end);
+
+            for (let data of paginatedData) {
+                const row = `<tr>
+                    <td>${data.date}</td>
+                    <td>${data.time}</td>
+                    <td>${data.name}</td>
+                    <td>${data.task}</td>
+                    <td><button class="btn-cancel" onclick="cancelReservation(this)">キャンセル</button></td>
+                </tr>`;
+                table.innerHTML += row;
+            }
+
+            document.getElementById("pageInfo").innerText = `ページ ${currentPage} / ${Math.ceil(sampleData.length / rowsPerPage)}`;
+
+            document.getElementById("prevButton").disabled = currentPage === 1;
+            document.getElementById("nextButton").disabled = currentPage === Math.ceil(sampleData.length / rowsPerPage);
+        }
+
+        function nextPage() {
+            if (currentPage < Math.ceil(sampleData.length / rowsPerPage)) {
+                currentPage++;
+                displayPage(currentPage);
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                displayPage(currentPage);
+            }
+        }
+
         function cancelReservation(button) {
             const row = button.parentElement.parentElement;
             row.parentNode.removeChild(row); // 行を削除
             alert("予約をキャンセルしました");
         }
+
+        // 初期表示
+        displayPage(currentPage);
     </script>
 </body>
 </html>
