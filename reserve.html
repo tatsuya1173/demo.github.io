@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservation Calendar</title>
     <!-- Import FullCalendar CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.11.3/main.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
     <!-- Import Materialize CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
     <!-- Import Google Icons -->
@@ -24,46 +24,88 @@
 
     <!-- Main Content -->
     <div class="container">
-        <h4 class="center-align">Reservation Calendar</h4>
+        <h4 id="header-title" class="center-align">Reservation Calendar</h4>
+        <p id="header-details" class="center-align grey-text"></p>
+
+        <!-- Back Link -->
+        <div class="left-align">
+            <a id="back-link" href="#" class="btn waves-effect waves-light grey">
+                <i class="material-icons left">arrow_back</i>Back to Events
+            </a>
+        </div>
 
         <!-- Calendar Container -->
         <div id="calendar"></div>
     </div>
 
     <!-- Import FullCalendar JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.11.3/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
     <!-- Import Materialize JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', async function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const propertyId = urlParams.get('property_id');
+            const eventId = urlParams.get('event_id');
+
+            const headerTitle = document.getElementById('header-title');
+            const headerDetails = document.getElementById('header-details');
+            const backLink = document.getElementById('back-link');
+
+            // Mock API Calls for Property and Event Details
+            const propertyDetails = await fetchPropertyDetails(propertyId);
+            const eventDetails = await fetchEventDetails(eventId);
+
+            // Update Header
+            headerTitle.textContent = `Reservation Calendar for ${propertyDetails.name}`;
+            headerDetails.textContent = `Event: ${eventDetails.name}`;
+
+            // Set Back Link
+            backLink.href = `event.html?property_id=${propertyId}`;
+
             // Initialize FullCalendar
-            var calendarEl = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth', // Month view
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
                 headerToolbar: {
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay',
                 },
-                events: [
-                    {
-                        title: 'Inspection - Room 101',
-                        start: '2024-11-20T10:00:00',
-                        end: '2024-11-20T12:00:00',
-                    },
-                    {
-                        title: 'Maintenance - Room 202',
-                        start: '2024-11-22T14:00:00',
-                        end: '2024-11-22T16:00:00',
-                    }
-                ],
-                eventClick: function(info) {
-                    // Redirect to reservation details or open modal
+                events: eventDetails.reservations, // Use reservations from event API
+                eventClick: function (info) {
                     alert('Event: ' + info.event.title);
-                }
+                },
             });
 
             calendar.render();
+
+            // Mock Fetch Functions
+            async function fetchPropertyDetails(propertyId) {
+                return {
+                    id: propertyId,
+                    name: propertyId === "1" ? "Sunshine Apartments" : "Maple Residences",
+                };
+            }
+
+            async function fetchEventDetails(eventId) {
+                return {
+                    id: eventId,
+                    name: eventId === "1" ? "Annual Inspection" : "Equipment Maintenance",
+                    reservations: [
+                        {
+                            title: "Room 101 Inspection",
+                            start: "2024-11-20T10:00:00",
+                            end: "2024-11-20T12:00:00",
+                        },
+                        {
+                            title: "Room 202 Maintenance",
+                            start: "2024-11-22T14:00:00",
+                            end: "2024-11-22T16:00:00",
+                        },
+                    ],
+                };
+            }
         });
     </script>
 </body>
