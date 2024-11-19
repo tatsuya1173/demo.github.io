@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservation Management</title>
+    <title>Reservation Calendar</title>
+    <!-- Import FullCalendar CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.11.3/main.min.css" rel="stylesheet">
     <!-- Import Materialize CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
     <!-- Import Google Icons -->
@@ -22,98 +24,47 @@
 
     <!-- Main Content -->
     <div class="container">
-        <h4 class="center-align">Reservation Management</h4>
+        <h4 class="center-align">Reservation Calendar</h4>
 
-        <!-- Filter Section -->
-        <div class="row">
-            <div class="col s12">
-                <form>
-                    <div class="input-field inline">
-                        <input id="search_date" type="text" class="datepicker">
-                        <label for="search_date">Filter by Date</label>
-                    </div>
-                    <div class="input-field inline">
-                        <input id="search_property" type="text">
-                        <label for="search_property">Filter by Property</label>
-                    </div>
-                    <button type="submit" class="btn waves-effect waves-light blue">
-                        <i class="material-icons left">search</i>Search
-                    </button>
-                </form>
-            </div>
-        </div>
-
-        <!-- Add Reservation Button -->
-        <div class="right-align">
-            <a href="add_reservation.html" class="btn waves-effect waves-light blue">
-                <i class="material-icons left">add</i>Add Reservation
-            </a>
-        </div>
-
-        <!-- Reservation Table -->
-        <table class="highlight centered">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Event Name</th>
-                    <th>Reservation Date</th>
-                    <th>Room Number</th>
-                    <th>Property</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Example rows -->
-                <tr>
-                    <td>1</td>
-                    <td>Inspection</td>
-                    <td>2024-11-20 10:00 AM</td>
-                    <td>101</td>
-                    <td>Sunshine Apartments</td>
-                    <td>
-                        <a href="edit_reservation.html?id=1" class="btn-small waves-effect waves-light blue">
-                            <i class="material-icons">edit</i>
-                        </a>
-                        <button class="btn-small waves-effect waves-light red" onclick="deleteReservation(1)">
-                            <i class="material-icons">delete</i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Equipment Check</td>
-                    <td>2024-11-21 2:00 PM</td>
-                    <td>202</td>
-                    <td>Maple Residences</td>
-                    <td>
-                        <a href="edit_reservation.html?id=2" class="btn-small waves-effect waves-light blue">
-                            <i class="material-icons">edit</i>
-                        </a>
-                        <button class="btn-small waves-effect waves-light red" onclick="deleteReservation(2)">
-                            <i class="material-icons">delete</i>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <!-- Calendar Container -->
+        <div id="calendar"></div>
     </div>
 
+    <!-- Import FullCalendar JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.11.3/main.min.js"></script>
     <!-- Import Materialize JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
-        // Initialize date picker
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.datepicker');
-            var instances = M.Datepicker.init(elems, {});
-        });
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize FullCalendar
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth', // Month view
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: [
+                    {
+                        title: 'Inspection - Room 101',
+                        start: '2024-11-20T10:00:00',
+                        end: '2024-11-20T12:00:00',
+                    },
+                    {
+                        title: 'Maintenance - Room 202',
+                        start: '2024-11-22T14:00:00',
+                        end: '2024-11-22T16:00:00',
+                    }
+                ],
+                eventClick: function(info) {
+                    // Redirect to reservation details or open modal
+                    alert('Event: ' + info.event.title);
+                }
+            });
 
-        // Example delete function
-        function deleteReservation(reservationId) {
-            if (confirm("Are you sure you want to delete this reservation?")) {
-                alert("Reservation with ID " + reservationId + " deleted.");
-                // Here, you would make an API call to delete the reservation
-            }
-        }
+            calendar.render();
+        });
     </script>
 </body>
 </html>
