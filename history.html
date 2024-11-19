@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit History</title>
+    <!-- Import Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Import Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="blue lighten-5">
+    <!-- Navigation Bar -->
+    <nav class="blue">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">Admin Dashboard</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h4 class="center-align">Edit History</h4>
+
+        <!-- Filter Section -->
+        <div class="row">
+            <form>
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="filter_start_date" type="text" class="datepicker">
+                        <label for="filter_start_date">Start Date</label>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="filter_end_date" type="text" class="datepicker">
+                        <label for="filter_end_date">End Date</label>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="filter_property" type="text">
+                        <label for="filter_property">Filter by Property</label>
+                    </div>
+                </div>
+                <div class="col s12 center">
+                    <button type="submit" class="btn waves-effect waves-light blue">
+                        <i class="material-icons left">search</i>Search
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- History Table -->
+        <table class="highlight centered">
+            <thead>
+                <tr>
+                    <th>History ID</th>
+                    <th>Reservation ID</th>
+                    <th>Property</th>
+                    <th>Room Number</th>
+                    <th>Old Date</th>
+                    <th>New Date</th>
+                    <th>Reason</th>
+                    <th>Changed On</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example rows -->
+                <tr>
+                    <td>1</td>
+                    <td>101</td>
+                    <td>Sunshine Apartments</td>
+                    <td>101</td>
+                    <td>2024-11-20 10:00 AM</td>
+                    <td>2024-11-22 2:00 PM</td>
+                    <td>Requested by resident</td>
+                    <td>2024-11-19</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>102</td>
+                    <td>Maple Residences</td>
+                    <td>202</td>
+                    <td>2024-11-21 3:00 PM</td>
+                    <td>2024-11-23 4:00 PM</td>
+                    <td>System maintenance</td>
+                    <td>2024-11-20</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Import Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        // Initialize date picker
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.datepicker');
+            var instances = M.Datepicker.init(elems, {});
+        });
+    </script>
+</body>
+</html>

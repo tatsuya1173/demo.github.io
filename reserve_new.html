@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Reservation</title>
+    <!-- Import Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Import Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="blue lighten-5">
+    <!-- Navigation Bar -->
+    <nav class="blue">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">Admin Dashboard</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h4 class="center-align">Add New Reservation</h4>
+        <form>
+            <!-- Event Name -->
+            <div class="input-field">
+                <input id="event_name" type="text" required>
+                <label for="event_name">Event Name</label>
+            </div>
+
+            <!-- Reservation Date -->
+            <div class="input-field">
+                <input id="reservation_date" type="text" class="datepicker" required>
+                <label for="reservation_date">Reservation Date</label>
+            </div>
+
+            <!-- Room Number -->
+            <div class="input-field">
+                <input id="room_number" type="text" required>
+                <label for="room_number">Room Number</label>
+            </div>
+
+            <!-- Property Name -->
+            <div class="input-field">
+                <select id="property_name">
+                    <option value="" disabled selected>Choose Property</option>
+                    <option value="1">Sunshine Apartments</option>
+                    <option value="2">Maple Residences</option>
+                </select>
+                <label for="property_name">Property</label>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="center">
+                <button type="submit" class="btn waves-effect waves-light blue">
+                    <i class="material-icons left">save</i>Save
+                </button>
+                <a href="reservation_list.html" class="btn waves-effect waves-light grey">
+                    <i class="material-icons left">arrow_back</i>Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Import Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Date Picker
+            var elemsDate = document.querySelectorAll('.datepicker');
+            M.Datepicker.init(elemsDate, {});
+
+            // Initialize Select
+            var elemsSelect = document.querySelectorAll('select');
+            M.FormSelect.init(elemsSelect);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Log Management</title>
+    <!-- Import Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Import Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="blue lighten-5">
+    <!-- Navigation Bar -->
+    <nav class="blue">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">Admin Dashboard</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h4 class="center-align">API Log Management</h4>
+
+        <!-- Filter Section -->
+        <div class="row">
+            <form>
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="filter_start_date" type="text" class="datepicker">
+                        <label for="filter_start_date">Start Date</label>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="filter_end_date" type="text" class="datepicker">
+                        <label for="filter_end_date">End Date</label>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="input-field">
+                        <input id="filter_status_code" type="text">
+                        <label for="filter_status_code">Filter by Status Code</label>
+                    </div>
+                </div>
+                <div class="col s12 center">
+                    <button type="submit" class="btn waves-effect waves-light blue">
+                        <i class="material-icons left">search</i>Search
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- API Log Table -->
+        <table class="highlight centered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Endpoint</th>
+                    <th>HTTP Method</th>
+                    <th>Status Code</th>
+                    <th>Client IP</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example rows -->
+                <tr>
+                    <td>1</td>
+                    <td>2024-11-20 10:00 AM</td>
+                    <td>/api/reservations</td>
+                    <td>GET</td>
+                    <td>200</td>
+                    <td>192.168.1.1</td>
+                    <td>
+                        <a href="api_log_details.html?id=1" class="btn-small waves-effect waves-light blue">
+                            <i class="material-icons">visibility</i>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>2024-11-21 02:30 PM</td>
+                    <td>/api/available-times</td>
+                    <td>POST</td>
+                    <td>500</td>
+                    <td>192.168.1.2</td>
+                    <td>
+                        <a href="api_log_details.html?id=2" class="btn-small waves-effect waves-light blue">
+                            <i class="material-icons">visibility</i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Import Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Date Picker
+            var elemsDate = document.querySelectorAll('.datepicker');
+            M.Datepicker.init(elemsDate, {});
+        });
+    </script>
+</body>
+</html>

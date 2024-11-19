@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+    <!-- Import Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Import Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="blue lighten-5">
+    <!-- Navigation Bar -->
+    <nav class="blue">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">Admin Dashboard</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h4 class="center-align">Add New User</h4>
+        <form>
+            <!-- First Name -->
+            <div class="input-field">
+                <input id="first_name" type="text" required>
+                <label for="first_name">First Name</label>
+            </div>
+
+            <!-- Last Name -->
+            <div class="input-field">
+                <input id="last_name" type="text" required>
+                <label for="last_name">Last Name</label>
+            </div>
+
+            <!-- Login ID -->
+            <div class="input-field">
+                <input id="login_id" type="text" required>
+                <label for="login_id">Login ID</label>
+            </div>
+
+            <!-- Password -->
+            <div class="input-field">
+                <input id="password" type="password" required>
+                <label for="password">Password</label>
+            </div>
+
+            <!-- Role -->
+            <div class="input-field">
+                <select id="role">
+                    <option value="" disabled selected>Choose Role</option>
+                    <option value="1">Admin</option>
+                    <option value="2">Manager</option>
+                    <option value="3">User</option>
+                </select>
+                <label for="role">Role</label>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="center">
+                <button type="submit" class="btn waves-effect waves-light blue">
+                    <i class="material-icons left">save</i>Save
+                </button>
+                <a href="user_list.html" class="btn waves-effect waves-light grey">
+                    <i class="material-icons left">arrow_back</i>Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Import Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Select
+            var elemsSelect = document.querySelectorAll('select');
+            M.FormSelect.init(elemsSelect);
+        });
+    </script>
+</body>
+</html>

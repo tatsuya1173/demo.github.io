@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Management</title>
+    <!-- Import Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Import Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="blue lighten-5">
+    <!-- Navigation Bar -->
+    <nav class="blue">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">Admin Dashboard</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h4 class="center-align">File Management</h4>
+
+        <!-- Add File Button -->
+        <div class="right-align">
+            <a href="upload_file.html" class="btn waves-effect waves-light blue">
+                <i class="material-icons left">cloud_upload</i>Upload File
+            </a>
+        </div>
+
+        <!-- File Table -->
+        <table class="highlight centered">
+            <thead>
+                <tr>
+                    <th>File ID</th>
+                    <th>File Name</th>
+                    <th>Upload Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example rows -->
+                <tr>
+                    <td>1</td>
+                    <td><a href="file1_url" target="_blank">Inspection_Report.pdf</a></td>
+                    <td>2024-11-20</td>
+                    <td>
+                        <button class="btn-small waves-effect waves-light red" onclick="deleteFile(1)">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><a href="file2_url" target="_blank">Blueprint.png</a></td>
+                    <td>2024-11-21</td>
+                    <td>
+                        <button class="btn-small waves-effect waves-light red" onclick="deleteFile(2)">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Import Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        // Example delete function
+        function deleteFile(fileId) {
+            if (confirm("Are you sure you want to delete this file?")) {
+                alert("File with ID " + fileId + " deleted.");
+                // Here, you would make an API call to delete the file
+            }
+        }
+    </script>
+</body>
+</html>

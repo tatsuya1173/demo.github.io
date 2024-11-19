@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Log Details</title>
+    <!-- Import Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Import Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="blue lighten-5">
+    <!-- Navigation Bar -->
+    <nav class="blue">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">Admin Dashboard</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h4 class="center-align">API Log Details</h4>
+
+        <!-- API Log Information -->
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">Log Info</span>
+                <ul class="collection">
+                    <li class="collection-item"><strong>Log ID:</strong> 1</li>
+                    <li class="collection-item"><strong>Endpoint:</strong> /api/reservations</li>
+                    <li class="collection-item"><strong>HTTP Method:</strong> GET</li>
+                    <li class="collection-item"><strong>Status Code:</strong> 200</li>
+                    <li class="collection-item"><strong>Client IP:</strong> 192.168.1.1</li>
+                    <li class="collection-item"><strong>Timestamp:</strong> 2024-11-20 10:00 AM</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Response Content -->
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">Response Content</span>
+                <pre class="grey lighten-3 p-3">
+{
+  "status": "success",
+  "data": [
+    { "reservation_id": 1, "event_name": "Inspection", "date": "2024-11-22" }
+  ]
+}
+                </pre>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="center">
+            <a href="api_logs.html" class="btn waves-effect waves-light grey">
+                <i class="material-icons left">arrow_back</i>Back to Logs
+            </a>
+        </div>
+    </div>
+
+    <!-- Import Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
