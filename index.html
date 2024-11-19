@@ -1,97 +1,94 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>シンプルな予約システム</title>
-    <style>
-        /* シックなスタイルのための基本設定 */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 400px;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        h2 {
-            color: #333;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            font-size: 14px;
-            margin: 10px 0 5px;
-            color: #555;
-        }
-
-        input[type="date"],
-        input[type="time"],
-        input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            margin-top: 5px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        input[type="submit"] {
-            background-color: #333;
-            color: #fff;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #555;
-        }
-
-        .message {
-            display: none;
-            color: #28a745;
-            margin-top: 15px;
-            text-align: center;
-        }
-    </style>
+    <title>Admin Dashboard</title>
+    <!-- Import Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Import Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body>
+<body class="blue lighten-5">
+    <!-- Navigation Bar -->
+    <nav class="blue">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">Admin Dashboard</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
     <div class="container">
-        <h2>予約システム</h2>
-        <form id="reservationForm">
-            <label for="date">予約日:</label>
-            <input type="date" id="date" name="date" required>
+        <h4 class="center-align">Dashboard Overview</h4>
 
-            <label for="time">時間:</label>
-            <input type="time" id="time" name="time" required>
+        <!-- Statistics Cards -->
+        <div class="row">
+            <div class="col s12 m4">
+                <div class="card">
+                    <div class="card-content blue white-text">
+                        <span class="card-title">Users</span>
+                        <h4 class="center">50</h4>
+                    </div>
+                    <div class="card-action center">
+                        <a href="user_list.html" class="white-text">Manage Users</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div class="card">
+                    <div class="card-content green white-text">
+                        <span class="card-title">Properties</span>
+                        <h4 class="center">20</h4>
+                    </div>
+                    <div class="card-action center">
+                        <a href="property_list.html" class="white-text">Manage Properties</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div class="card">
+                    <div class="card-content orange white-text">
+                        <span class="card-title">Reservations</span>
+                        <h4 class="center">120</h4>
+                    </div>
+                    <div class="card-action center">
+                        <a href="reservation_list.html" class="white-text">Manage Reservations</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <input type="submit" value="予約する">
-        </form>
-        <div class="message" id="confirmationMessage">ご予約が完了しました！</div>
+        <!-- Quick Access Links -->
+        <div class="row">
+            <div class="col s12 m6">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Edit History</span>
+                        <p>View and manage reservation edit history.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="edit_history.html">Go to Edit History</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m6">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">API Logs</span>
+                        <p>Monitor API requests and responses.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="api_logs.html">Go to API Logs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <script>
-        // JavaScriptでフォーム送信イベントを制御
-        document.getElementById("reservationForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // 実際の送信を防ぐ
-            const confirmationMessage = document.getElementById("confirmationMessage");
-            confirmationMessage.style.display = "block"; // メッセージを表示
-        });
-    </script>
+    <!-- Import Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
