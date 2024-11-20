@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Reservation</title>
+    <!-- Import Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Import Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="blue lighten-5">
+    <!-- Navigation Bar -->
+    <nav class="blue">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">Reservation Management</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h4 class="center-align">Add Reservation</h4>
+        <p class="center-align grey-text">Time Block: 11:30 - 13:00</p>
+
+        <!-- Reservation Form -->
+        <form action="/api/reservations" method="POST">
+            <div class="input-field">
+                <input id="room_number" name="room_number" type="text" required>
+                <label for="room_number">Room Number</label>
+            </div>
+            <div class="input-field">
+                <input id="name" name="name" type="text" required>
+                <label for="name">Name</label>
+            </div>
+            <div class="input-field">
+                <input id="contact" name="contact" type="text" required>
+                <label for="contact">Contact</label>
+            </div>
+            <div class="right-align">
+                <button type="submit" class="btn waves-effect waves-light blue">
+                    <i class="material-icons left">save</i>Submit
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Import Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

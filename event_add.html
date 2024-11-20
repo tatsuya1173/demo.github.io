@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Event</title>
+    <!-- Import Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Import Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="blue lighten-5">
+    <!-- Navigation Bar -->
+    <nav class="blue">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">Event Management</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h4 class="center-align">Add Event</h4>
+        <p class="center-align grey-text">Property: Sunshine Apartments</p>
+
+        <!-- Event Form -->
+        <form action="/api/events" method="POST">
+            <div class="input-field">
+                <input id="event_name" name="event_name" type="text" required>
+                <label for="event_name">Event Name</label>
+            </div>
+            <div class="input-field">
+                <input id="start_date" name="start_date" type="date" required>
+                <label for="start_date">Start Date</label>
+            </div>
+            <div class="input-field">
+                <input id="end_date" name="end_date" type="date" required>
+                <label for="end_date">End Date</label>
+            </div>
+            <div class="input-field">
+                <textarea id="description" name="description" class="materialize-textarea"></textarea>
+                <label for="description">Description</label>
+            </div>
+
+            <!-- Add Time Block Section -->
+            <h5>Time Blocks</h5>
+            <div id="time-blocks">
+                <div class="row">
+                    <div class="input-field col s5">
+                        <input type="time" name="time_blocks[start][]" required>
+                        <label>Start Time</label>
+                    </div>
+                    <div class="input-field col s5">
+                        <input type="time" name="time_blocks[end][]" required>
+                        <label>End Time</label>
+                    </div>
+                    <div class="col s2">
+                        <button type="button" class="btn-floating btn-small waves-effect waves-light red remove-time-block">
+                            <i class="material-icons">remove</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <button type="button" id="add-time-block" class="btn waves-effect waves-light blue">
+                <i class="material-icons left">add</i>Add Time Block
+            </button>
+
+            <div class="right-align">
+                <button type="submit" class="btn waves-effect waves-light blue">
+                    <i class="material-icons left">save</i>Submit
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Import Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const timeBlocksContainer = document.getElementById('time-blocks');
+            const addTimeBlockButton = document.getElementById('add-time-block');
+
+            addTimeBlockButton.addEventListener('click', () => {
+                const timeBlockTemplate = `
+                    <div class="row">
+                        <div class="input-field col s5">
+                            <input type="time" name="time_blocks[start][]" required>
+                            <label>Start Time</label>
+                        </div>
+                        <div class="input-field col s5">
+                            <input type="time" name="time_blocks[end][]" required>
+                            <label>End Time</label>
+                        </div>
+                        <div class="col s2">
+                            <button type="button" class="btn-floating btn-small waves-effect waves-light red remove-time-block">
+                                <i class="material-icons">remove</i>
+                            </button>
+                        </div>
+                    </div>`;
+                timeBlocksContainer.insertAdjacentHTML('beforeend', timeBlockTemplate);
+
+                // Attach remove event to new buttons
+                const removeButtons = document.querySelectorAll('.remove-time-block');
+                removeButtons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        e.target.closest('.row').remove();
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
