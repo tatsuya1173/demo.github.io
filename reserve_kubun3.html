@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Calendar</title>
+    <!-- Import FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+    <!-- Import Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Import Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="blue lighten-5">
+    <!-- Navigation Bar -->
+    <nav class="blue">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">Reservation Management</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h4 class="center-align">Reservation Calendar</h4>
+        <p class="center-align grey-text">Event: Annual Inspection</p>
+        <p class="center-align grey-text">Property: Sunshine Apartments</p>
+
+        <!-- Calendar -->
+        <div id="calendar"></div>
+
+        <!-- Reservation Details -->
+        <div id="reservation-details" class="hide">
+            <h5 class="center-align">Reservations for <span id="selected-date"></span></h5>
+            <ul class="collection">
+                <!-- Reservation details will be populated dynamically -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Import FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <!-- Import Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const calendarEl = document.getElementById('calendar');
+            const reservationDetails = document.getElementById('reservation-details');
+            const selectedDateEl = document.getElementById('selected-date');
+            const collectionEl = reservationDetails.querySelector('.collection');
+
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,dayGridDay'
+                },
+                events: [
+                    { title: "3 reservations", start: "2024-11-15" },
+                    { title: "2 reservations", start: "2024-11-16" }
+                ],
+                dateClick: function (info) {
+                    // Fetch reservations for the clicked date
+                    fetch(`/api/reservations?date=${info.dateStr}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            // Populate reservation details
+                            selectedDateEl.textContent = info.dateStr;
+                            collectionEl.innerHTML = ''; // Clear previous details
+                            data.forEach(reservation => {
+                                const item = `
+                                    <li class="collection-item">
+                                        <span class="title">Room ${reservation.room_number}</span>
+                                        <p>
+                                            Type: ${reservation.reservation_type}<br>
+                                            Reserved by: ${reservation.reserved_by}<br>
+                                            Contact: ${reservation.contact}
+                                        </p>
+                                    </li>`;
+                                collectionEl.insertAdjacentHTML('beforeend', item);
+                            });
+                            reservationDetails.classList.remove('hide');
+                        });
+                }
+            });
+
+            calendar.render();
+        });
+    </script>
+</body>
+</html>
