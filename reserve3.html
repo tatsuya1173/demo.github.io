@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Calendar</title>
+    <!-- Import FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+    <!-- Import Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Import Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="blue lighten-5">
+    <!-- Navigation Bar -->
+    <nav class="blue">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">Reservation Management</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Event and Property Header -->
+        <h4 class="center-align">Event: Annual Inspection</h4>
+        <p class="center-align grey-text">Property: Sunshine Apartments</p>
+
+        <!-- Calendar Container -->
+        <div id="calendar"></div>
+    </div>
+
+    <!-- Import FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <!-- Import Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'timeGridDay', // Day grid view for time blocks
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'timeGridDay,timeGridWeek,dayGridMonth'
+                },
+                events: [
+                    {
+                        title: "10:00 - 11:30: 3/5 Reserved",
+                        start: "2024-11-20T10:00:00",
+                        end: "2024-11-20T11:30:00",
+                        color: "green"
+                    },
+                    {
+                        title: "11:30 - 13:00: 4/5 Reserved",
+                        start: "2024-11-20T11:30:00",
+                        end: "2024-11-20T13:00:00",
+                        color: "orange"
+                    },
+                    {
+                        title: "13:00 - 14:30: 5/5 Reserved (Full)",
+                        start: "2024-11-20T13:00:00",
+                        end: "2024-11-20T14:30:00",
+                        color: "red"
+                    }
+                ],
+                eventClick: function (info) {
+                    alert('Event: ' + info.event.title);
+                    // Redirect to details or open modal
+                }
+            });
+
+            calendar.render();
+        });
+    </script>
+</body>
+</html>
