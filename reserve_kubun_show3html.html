@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Details</title>
+    <!-- Import Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Import Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="blue lighten-5">
+    <!-- Navigation Bar -->
+    <nav class="blue">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">Reservation Management</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="index.html">Back to Calendar</a></li>
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h4 class="center-align">Reservations for <span id="selected-date">2024-11-15</span></h4>
+
+        <!-- Reservation List -->
+        <ul class="collection">
+            <!-- Reservation details will be populated dynamically -->
+        </ul>
+    </div>
+
+    <!-- Import Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        // Example API Data
+        const reservations = [
+            {
+                "id": 1,
+                "room_number": "101",
+                "reservation_type": "午前",
+                "reserved_by": "John Doe",
+                "contact": "123-456-7890"
+            },
+            {
+                "id": 2,
+                "room_number": "202",
+                "reservation_type": "午後",
+                "reserved_by": "Jane Smith",
+                "contact": "987-654-3210"
+            }
+        ];
+
+        // Populate reservation details dynamically
+        document.addEventListener('DOMContentLoaded', function () {
+            const collectionEl = document.querySelector('.collection');
+            reservations.forEach(reservation => {
+                const item = `
+                    <li class="collection-item">
+                        <span class="title">Room ${reservation.room_number}</span>
+                        <p>
+                            Type: ${reservation.reservation_type}<br>
+                            Reserved by: ${reservation.reserved_by}<br>
+                            Contact: ${reservation.contact}
+                        </p>
+                        <div class="secondary-content">
+                            <a href="edit_reservation.html?id=${reservation.id}" class="btn-small blue waves-effect waves-light">
+                                <i class="material-icons left">edit</i>Edit
+                            </a>
+                            <a href="#" onclick="deleteReservation(${reservation.id})" class="btn-small red waves-effect waves-light">
+                                <i class="material-icons left">delete</i>Delete
+                            </a>
+                        </div>
+                    </li>`;
+                collectionEl.insertAdjacentHTML('beforeend', item);
+            });
+        });
+
+        // Example delete function
+        function deleteReservation(id) {
+            if (confirm(`Are you sure you want to delete reservation ID ${id}?`)) {
+                // API call to delete reservation
+                alert(`Reservation ID ${id} deleted!`);
+            }
+        }
+    </script>
+</body>
+</html>
