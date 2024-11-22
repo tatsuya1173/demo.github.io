@@ -3,63 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>予約管理画面</title>
+    <title>AdminLTE風レイアウト</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #eafbf0;
+            background-color: #f4f6f9;
+        }
+        .sidebar {
+            background-color: #343a40;
+            min-height: 100vh;
+            color: white;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+        .content {
+            margin-left: 220px;
+            padding: 20px;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-success">
-        <div class="container-fluid">
-            <a class="navbar-brand text-white" href="#">予約管理</a>
+    <div class="d-flex">
+        <div class="sidebar">
+            <h4 class="text-center text-light">管理メニュー</h4>
+            <a href="/admin-dashboard">ダッシュボード</a>
+            <a href="/company-management">作業会社管理</a>
+            <a href="/schedule-management">スケジュール管理</a>
+            <a href="/reservation-management">予約管理</a>
+            <a href="/change-history">変更履歴</a>
         </div>
-    </nav>
-    <div class="container my-5">
-        <h3 class="text-success">予約一覧</h3>
-        <table class="table table-striped">
-            <thead class="bg-success text-white">
-                <tr>
-                    <th>ID</th>
-                    <th>客先名</th>
-                    <th>作業会社</th>
-                    <th>開始時間</th>
-                    <th>終了時間</th>
-                    <th>状態</th>
-                    <th>操作</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>山田太郎</td>
-                    <td>作業会社A</td>
-                    <td>2024-12-01 10:00</td>
-                    <td>2024-12-01 11:00</td>
-                    <td>確定</td>
-                    <td>
-                        <a href="/demo.github.io/weing/reservation_detail.html" class="btn btn-sm btn-success">詳細</a>
-                        <button class="btn btn-sm btn-danger">キャンセル</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>佐藤花子</td>
-                    <td>作業会社B</td>
-                    <td>2024-12-02 13:00</td>
-                    <td>2024-12-02 14:00</td>
-                    <td>受付済み</td>
-                    <td>
-                        <a href="/demo.github.io/weing/reservation_detail.html" class="btn btn-sm btn-success">詳細</a>
-                        <button class="btn btn-sm btn-danger">キャンセル</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="text-center mt-3">
-            <a href="/demo.github.io/weing/admin_dashboard.html" class="btn btn-secondary">戻る</a>
+        <div class="content">
+            <div class="content">
+                <h3 class="text-success">予約管理</h3>
+                <div id="calendar"></div>
+                <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js"></script>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var calendarEl = document.getElementById('calendar');
+                        var calendar = new FullCalendar.Calendar(calendarEl, {
+                            initialView: 'dayGridMonth',
+                            locale: 'ja',
+                            headerToolbar: {
+                                left: 'prev,next today',
+                                center: 'title',
+                                right: 'dayGridMonth,dayGridWeek'
+                            },
+                            events: [
+                                {
+                                    id: 1,
+                                    title: '山田太郎 (作業会社A)',
+                                    start: '2024-12-01T10:00:00',
+                                    end: '2024-12-01T11:00:00',
+                                    color: '#28a745'
+                                },
+                                {
+                                    id: 2,
+                                    title: '佐藤花子 (作業会社B)',
+                                    start: '2024-12-02T13:00:00',
+                                    end: '2024-12-02T14:00:00',
+                                    color: '#ffc107'
+                                }
+                            ]
+                        });
+                        calendar.render();
+                    });
+                </script>
+            </div>
         </div>
     </div>
 </body>
