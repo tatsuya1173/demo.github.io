@@ -4,67 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create User</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AdminLTE CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background-color: #e3f2fd; /* Light blue */
-        }
-        .card {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .btn-primary {
-            background-color: #42a5f5;
-            border: none;
-        }
-        .btn-primary:hover {
-            background-color: #1e88e5;
-        }
-        .form-container {
-            margin-top: 50px;
+            background-color: #f4f6f9;
         }
     </style>
 </head>
-<body>
-    <div class="container form-container">
-        <div class="card w-100" style="max-width: 500px; margin: auto;">
-            <div class="card-body">
-                <h3 class="card-title text-center text-primary">Create New User</h3>
-                <form action="/users/create" method="POST">
-                    <!-- First Name -->
-                    <div class="form-group">
-                        <label for="first_name">First Name</label>
-                        <input type="text" class="form-control" id="first_name" name="first_name" required placeholder="Enter first name">
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div class="container-fluid">
+                    <h1 class="text-dark">Create New User</h1>
+                </div>
+            </div>
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="card card-primary">
+                        <div class="card-body">
+                            <form action="/users/create" method="post">
+                                <!-- First Name -->
+                                <div class="form-group">
+                                    <label for="first_name">First Name</label>
+                                    <input type="text" class="form-control" id="first_name" name="first_name" required placeholder="Enter first name">
+                                </div>
+                                <!-- Last Name -->
+                                <div class="form-group">
+                                    <label for="last_name">Last Name</label>
+                                    <input type="text" class="form-control" id="last_name" name="last_name" required placeholder="Enter last name">
+                                </div>
+                                <!-- Email -->
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" required placeholder="Enter email">
+                                </div>
+                                <!-- Role -->
+                                <div class="form-group">
+                                    <label for="role">Role</label>
+                                    <select class="form-control" id="role" name="role" required>
+                                        <option value="Admin">Admin</option>
+                                        <option value="User">User</option>
+                                    </select>
+                                </div>
+                                <!-- Submit -->
+                                <button type="submit" class="btn btn-primary">Create User</button>
+                                <a href="/demo.github.io/weing/user_list.html" class="btn btn-secondary">Cancel</a>
+                            </form>
+                        </div>
                     </div>
-                    <!-- Last Name -->
-                    <div class="form-group">
-                        <label for="last_name">Last Name</label>
-                        <input type="text" class="form-control" id="last_name" name="last_name" required placeholder="Enter last name">
-                    </div>
-                    <!-- Email -->
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required placeholder="Enter email">
-                    </div>
-                    <!-- Role -->
-                    <div class="form-group">
-                        <label for="role">Role</label>
-                        <select class="form-control" id="role" name="role" required>
-                            <option value="Admin">Admin</option>
-                            <option value="User">User</option>
-                        </select>
-                    </div>
-                    <!-- Submit Button -->
-                    <button type="submit" class="btn btn-primary btn-block">Create User</button>
-                </form>
+                </div>
             </div>
         </div>
     </div>
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- AdminLTE JS -->
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
 </body>
 </html>

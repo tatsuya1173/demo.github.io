@@ -4,58 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Log List</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AdminLTE CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background-color: #e3f2fd; /* Light blue */
-        }
-        .table-container {
-            margin-top: 50px;
+            background-color: #f4f6f9;
         }
     </style>
 </head>
-<body>
-    <div class="container table-container">
-        <h2 class="text-primary text-center">API Log List</h2>
-        <table class="table table-hover table-striped">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Endpoint</th>
-                    <th scope="col">Method</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Timestamp</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>/api/events</td>
-                    <td>GET</td>
-                    <td>200</td>
-                    <td>2024-11-10 10:30:45</td>
-                    <td>
-                        <a href="log_api_detail.html?id=1" class="btn btn-sm btn-primary">View</a>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>/api/reservations</td>
-                    <td>POST</td>
-                    <td>201</td>
-                    <td>2024-11-10 11:15:00</td>
-                    <td>
-                        <a href="log_api_detail.html?id=2" class="btn btn-sm btn-primary">View</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div class="container-fluid">
+                    <h1 class="text-dark">API Log List</h1>
+                </div>
+            </div>
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Endpoint</th>
+                                        <th>Method</th>
+                                        <th>Status</th>
+                                        <th>Timestamp</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>/api/events</td>
+                                        <td>GET</td>
+                                        <td>200</td>
+                                        <td>2024-11-10 10:30:45</td>
+                                        <td>
+                                            <a href="/demo.github.io/weing/log_api_detail.html?id=1" class="btn btn-primary btn-sm">
+                                                <i class="fas fa-eye"></i> View
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>/api/reservations</td>
+                                        <td>POST</td>
+                                        <td>201</td>
+                                        <td>2024-11-10 11:15:00</td>
+                                        <td>
+                                            <a href="/demo.github.io/weing/log_api_detail.html?id=2" class="btn btn-primary btn-sm">
+                                                <i class="fas fa-eye"></i> View
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- AdminLTE JS -->
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
 </body>
 </html>

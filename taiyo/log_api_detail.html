@@ -4,44 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Log Detail</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AdminLTE CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background-color: #e3f2fd; /* Light blue */
-        }
-        .card {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .form-container {
-            margin-top: 50px;
+            background-color: #f4f6f9;
         }
     </style>
 </head>
-<body>
-    <div class="container form-container">
-        <div class="card w-100" style="max-width: 500px; margin: auto;">
-            <div class="card-body">
-                <h3 class="card-title text-center text-primary">API Log Detail</h3>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><strong>Endpoint:</strong> /api/events</li>
-                    <li class="list-group-item"><strong>Method:</strong> GET</li>
-                    <li class="list-group-item"><strong>Status:</strong> 200</li>
-                    <li class="list-group-item"><strong>Request Data:</strong> { "property_name": "Sunshine" }</li>
-                    <li class="list-group-item"><strong>Response Data:</strong> { "status": "success", "events": [...] }</li>
-                    <li class="list-group-item"><strong>Timestamp:</strong> 2024-11-10 10:30:45</li>
-                </ul>
-                <div class="text-center mt-3">
-                    <a href="log_api_list.html" class="btn btn-primary">Back to API Log List</a>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div class="container-fluid">
+                    <h1 class="text-dark">API Log Detail</h1>
+                </div>
+            </div>
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong>Endpoint:</strong> /api/events</li>
+                                <li class="list-group-item"><strong>Method:</strong> GET</li>
+                                <li class="list-group-item"><strong>Status:</strong> 200</li>
+                                <li class="list-group-item"><strong>Request Data:</strong> { "property_name": "Sunshine" }</li>
+                                <li class="list-group-item"><strong>Response Data:</strong> { "status": "success", "events": [...] }</li>
+                                <li class="list-group-item"><strong>Timestamp:</strong> 2024-11-10 10:30:45</li>
+                            </ul>
+                            <div class="text-center mt-3">
+                                <a href="/demo.github.io/weing/log_api_list.html" class="btn btn-primary">Back to API Log List</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- AdminLTE JS -->
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
 </body>
 </html>

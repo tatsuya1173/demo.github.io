@@ -4,54 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Property</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AdminLTE CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background-color: #e3f2fd; /* Light blue */
-        }
-        .card {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .btn-primary {
-            background-color: #42a5f5;
-            border: none;
-        }
-        .btn-primary:hover {
-            background-color: #1e88e5;
-        }
-        .form-container {
-            margin-top: 50px;
+            background-color: #f4f6f9;
         }
     </style>
 </head>
-<body>
-    <div class="container form-container">
-        <div class="card w-100" style="max-width: 500px; margin: auto;">
-            <div class="card-body">
-                <h3 class="card-title text-center text-primary">Create New Property</h3>
-                <form action="/properties/create" method="POST">
-                    <!-- Property Name -->
-                    <div class="form-group">
-                        <label for="property_name">Property Name</label>
-                        <input type="text" class="form-control" id="property_name" name="property_name" required placeholder="Enter property name">
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div class="container-fluid">
+                    <h1 class="text-dark">Create New Property</h1>
+                </div>
+            </div>
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="card card-primary">
+                        <div class="card-body">
+                            <form action="/properties/create" method="post">
+                                <!-- Property Name -->
+                                <div class="form-group">
+                                    <label for="property_name">Property Name</label>
+                                    <input type="text" class="form-control" id="property_name" name="property_name" required placeholder="Enter property name">
+                                </div>
+                                <!-- Address -->
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <input type="text" class="form-control" id="address" name="address" required placeholder="Enter address">
+                                </div>
+                                <!-- Submit -->
+                                <button type="submit" class="btn btn-primary">Create Property</button>
+                                <a href="p/demo.github.io/weing/roperty_list.html" class="btn btn-secondary">Cancel</a>
+                            </form>
+                        </div>
                     </div>
-                    <!-- Address -->
-                    <div class="form-group">
-                        <label for="address">Address</label>
-                        <input type="text" class="form-control" id="address" name="address" required placeholder="Enter address">
-                    </div>
-                    <!-- Submit Button -->
-                    <button type="submit" class="btn btn-primary btn-block">Create Property</button>
-                </form>
+                </div>
             </div>
         </div>
     </div>
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- AdminLTE JS -->
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
 </body>
 </html>

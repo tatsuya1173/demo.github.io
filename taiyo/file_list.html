@@ -4,74 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File List</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AdminLTE CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background-color: #e3f2fd; /* Light blue */
-        }
-        .table-container {
-            margin-top: 50px;
-        }
-        .btn-primary {
-            background-color: #42a5f5;
-            border: none;
-        }
-        .btn-primary:hover {
-            background-color: #1e88e5;
-        }
-        .btn-danger {
-            background-color: #e53935;
-            border: none;
-        }
-        .btn-danger:hover {
-            background-color: #d32f2f;
+            background-color: #f4f6f9;
         }
     </style>
 </head>
-<body>
-    <div class="container table-container">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 class="text-primary">File List</h2>
-            <a href="file_upload.html" class="btn btn-primary">Upload New File</a>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div class="container-fluid">
+                    <h1 class="text-dark">File List</h1>
+                </div>
+            </div>
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="card">
+                        <div class="card-header">
+                            <a href="/demo.github.io/taiyo/file_upload.html" class="btn btn-primary">
+                                <i class="fas fa-upload"></i> Upload New File
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>File Name</th>
+                                        <th>Uploaded By</th>
+                                        <th>Upload Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>inspection_report.pdf</td>
+                                        <td>Admin</td>
+                                        <td>2024-11-10</td>
+                                        <td>
+                                            <a href="#" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-download"></i> Download
+                                            </a>
+                                            <a href="/demo.github.io/taiyo/file_delete.html?id=1" class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i> Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>maintenance_schedule.docx</td>
+                                        <td>Admin</td>
+                                        <td>2024-11-11</td>
+                                        <td>
+                                            <a href="#" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-download"></i> Download
+                                            </a>
+                                            <a href="/demo.github.io/taiyo/file_delete.html?id=2" class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i> Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <table class="table table-hover table-striped">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">File Name</th>
-                    <th scope="col">Uploaded By</th>
-                    <th scope="col">Upload Date</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>inspection_report.pdf</td>
-                    <td>Admin</td>
-                    <td>2024-11-10</td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-primary">Download</a>
-                        <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>maintenance_schedule.docx</td>
-                    <td>Admin</td>
-                    <td>2024-11-11</td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-primary">Download</a>
-                        <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
     </div>
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- AdminLTE JS -->
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
 </body>
 </html>

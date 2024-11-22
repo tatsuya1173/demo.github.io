@@ -4,64 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Property List</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AdminLTE CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background-color: #e3f2fd; /* Light blue */
-        }
-        .table-container {
-            margin-top: 50px;
-        }
-        .btn-primary {
-            background-color: #42a5f5;
-            border: none;
-        }
-        .btn-primary:hover {
-            background-color: #1e88e5;
+            background-color: #f4f6f9;
         }
     </style>
 </head>
-<body>
-    <div class="container table-container">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 class="text-primary">Property List</h2>
-            <a href="property_create.html" class="btn btn-primary">Add New Property</a>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div class="container-fluid">
+                    <h1 class="text-dark">Property List</h1>
+                </div>
+            </div>
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="card">
+                        <div class="card-header">
+                            <a href="/demo.github.io/taiyo/property_create.html" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Add New Property
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Property Name</th>
+                                        <th>Address</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Sunshine Apartments</td>
+                                        <td>123 Main Street, City</td>
+                                        <td>
+                                            <a href="/demo.github.io/taiyo/property_edit.html?id=1" class="btn btn-warning btn-sm">
+                                                <i class="fas fa-edit"></i> Edit
+                                            </a>
+                                            <a href="#" class="btn btn-danger btn-sm">
+                                                <i class="fas fa-trash"></i> Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Greenwood Estates</td>
+                                        <td>456 Elm Street, City</td>
+                                        <td>
+                                            <a href="/demo.github.io/taiyo/property_edit.html?id=2" class="btn btn-warning btn-sm">
+                                                <i class="fas fa-edit"></i> Edit
+                                            </a>
+                                            <a href="#" class="btn btn-danger btn-sm">
+                                                <i class="fas fa-trash"></i> Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <table class="table table-hover table-striped">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Property Name</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Sunshine Apartments</td>
-                    <td>123 Main Street, City</td>
-                    <td>
-                        <a href="property_edit.html?id=1" class="btn btn-sm btn-warning">Edit</a>
-                        <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Greenwood Estates</td>
-                    <td>456 Elm Street, City</td>
-                    <td>
-                        <a href="property_edit.html?id=2" class="btn btn-sm btn-warning">Edit</a>
-                        <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
     </div>
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- AdminLTE JS -->
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
 </body>
 </html>
