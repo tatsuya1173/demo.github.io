@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Calendar</title>
+    <!-- FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e3f2fd; /* Light blue */
+        }
+        .calendar-container {
+            margin-top: 50px;
+        }
+        .btn-primary {
+            background-color: #42a5f5;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #1e88e5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container calendar-container">
+        <h2 class="text-primary text-center">Reservation Calendar</h2>
+        <div id="calendar"></div>
+    </div>
+    <!-- FullCalendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,dayGridDay'
+                },
+                events: [
+                    { title: '3 reservations', start: '2024-11-15' },
+                    { title: '2 reservations', start: '2024-11-16' }
+                ],
+                dateClick: function (info) {
+                    // Redirect to reservation detail page
+                    window.location.href = `reservation_detail.html?date=${info.dateStr}`;
+                }
+            });
+            calendar.render();
+        });
+    </script>
+</body>
+</html>

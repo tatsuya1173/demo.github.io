@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e3f2fd; /* Light blue */
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #42a5f5;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #1e88e5;
+        }
+        .form-container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container form-container">
+        <div class="card w-100" style="max-width: 500px; margin: auto;">
+            <div class="card-body">
+                <h3 class="card-title text-center text-primary">Create New Event</h3>
+                <form action="/events/create" method="POST">
+                    <!-- Event Name -->
+                    <div class="form-group">
+                        <label for="event_name">Event Name</label>
+                        <input type="text" class="form-control" id="event_name" name="event_name" required placeholder="Enter event name">
+                    </div>
+                    <!-- Start Date -->
+                    <div class="form-group">
+                        <label for="start_date">Start Date</label>
+                        <input type="date" class="form-control" id="start_date" name="start_date" required>
+                    </div>
+                    <!-- End Date -->
+                    <div class="form-group">
+                        <label for="end_date">End Date</label>
+                        <input type="date" class="form-control" id="end_date" name="end_date" required>
+                    </div>
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary btn-block">Create Event</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

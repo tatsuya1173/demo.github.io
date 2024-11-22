@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Log List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e3f2fd; /* Light blue */
+        }
+        .table-container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container table-container">
+        <h2 class="text-primary text-center">Error Log List</h2>
+        <table class="table table-hover table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Error Code</th>
+                    <th scope="col">Message</th>
+                    <th scope="col">Endpoint</th>
+                    <th scope="col">Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>500</td>
+                    <td>Internal Server Error</td>
+                    <td>/api/events</td>
+                    <td>2024-11-10 09:45:30</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>404</td>
+                    <td>Resource Not Found</td>
+                    <td>/api/reservations/999</td>
+                    <td>2024-11-10 10:15:20</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

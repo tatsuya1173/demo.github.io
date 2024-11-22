@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e3f2fd; /* Light blue */
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #42a5f5;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #1e88e5;
+        }
+        .form-container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container form-container">
+        <div class="card w-100" style="max-width: 500px; margin: auto;">
+            <div class="card-body">
+                <h3 class="card-title text-center text-primary">Edit User</h3>
+                <form action="/users/edit/1" method="POST">
+                    <!-- First Name -->
+                    <div class="form-group">
+                        <label for="first_name">First Name</label>
+                        <input type="text" class="form-control" id="first_name" name="first_name" value="John" required>
+                    </div>
+                    <!-- Last Name -->
+                    <div class="form-group">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" class="form-control" id="last_name" name="last_name" value="Doe" required>
+                    </div>
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" value="john.doe@example.com" required>
+                    </div>
+                    <!-- Role -->
+                    <div class="form-group">
+                        <label for="role">Role</label>
+                        <select class="form-control" id="role" name="role" required>
+                            <option value="Admin" selected>Admin</option>
+                            <option value="User">User</option>
+                        </select>
+                    </div>
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

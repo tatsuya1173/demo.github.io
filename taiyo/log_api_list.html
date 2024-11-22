@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Log List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e3f2fd; /* Light blue */
+        }
+        .table-container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container table-container">
+        <h2 class="text-primary text-center">API Log List</h2>
+        <table class="table table-hover table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Endpoint</th>
+                    <th scope="col">Method</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Timestamp</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>/api/events</td>
+                    <td>GET</td>
+                    <td>200</td>
+                    <td>2024-11-10 10:30:45</td>
+                    <td>
+                        <a href="log_api_detail.html?id=1" class="btn btn-sm btn-primary">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>/api/reservations</td>
+                    <td>POST</td>
+                    <td>201</td>
+                    <td>2024-11-10 11:15:00</td>
+                    <td>
+                        <a href="log_api_detail.html?id=2" class="btn btn-sm btn-primary">View</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e3f2fd; /* Light blue */
+        }
+        .table-container {
+            margin-top: 50px;
+        }
+        .btn-primary {
+            background-color: #42a5f5;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #1e88e5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container table-container">
+        <h2 class="text-primary text-center">Reservation Change History</h2>
+        <table class="table table-hover table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Room Number</th>
+                    <th scope="col">Event</th>
+                    <th scope="col">Previous Type</th>
+                    <th scope="col">New Type</th>
+                    <th scope="col">Change Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>101</td>
+                    <td>Annual Inspection</td>
+                    <td>午前</td>
+                    <td>午後</td>
+                    <td>2024-11-10</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>202</td>
+                    <td>Elevator Maintenance</td>
+                    <td>午後</td>
+                    <td>午前</td>
+                    <td>2024-11-12</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

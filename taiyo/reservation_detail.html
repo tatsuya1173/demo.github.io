@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Detail</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e3f2fd; /* Light blue */
+        }
+        .table-container {
+            margin-top: 50px;
+        }
+        .btn-primary {
+            background-color: #42a5f5;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #1e88e5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container table-container">
+        <h2 class="text-primary text-center">Reservations for <span id="selected-date"></span></h2>
+        <table class="table table-hover table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Room Number</th>
+                    <th scope="col">Reservation Type</th>
+                    <th scope="col">Reserved By</th>
+                    <th scope="col">Contact</th>
+                </tr>
+            </thead>
+            <tbody id="reservation-list">
+                <!-- Reservations will be dynamically loaded -->
+            </tbody>
+        </table>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const date = urlParams.get('date') || 'N/A';
+            document.getElementById('selected-date').textContent = date;
+
+            // Example reservations
+            const reservations = [
+                { id: 1, room: '101', type: '午前', reservedBy: 'John Doe', contact: '123-456-7890' },
+                { id: 2, room: '202', type: '午後', reservedBy: 'Jane Smith', contact: '987-654-3210' }
+            ];
+
+            const reservationList = document.getElementById('reservation-list');
+            reservations.forEach(reservation => {
+                const row = `
+                    <tr>
+                        <th scope="row">${reservation.id}</th>
+                        <td>${reservation.room}</td>
+                        <td>${reservation.type}</td>
+                        <td>${reservation.reservedBy}</td>
+                        <td>${reservation.contact}</td>
+                    </tr>
+                `;
+                reservationList.insertAdjacentHTML('beforeend', row);
+            });
+        });
+    </script>
+</body>
+</html>
