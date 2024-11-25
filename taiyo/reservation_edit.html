@@ -8,31 +8,28 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        body {
-            background-color: #f4f6f9;
-        }
-    </style>
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
+        <!-- Sidebar -->
+        <!-- (同じサイドバーをここに配置) -->
+
+        <!-- Content Wrapper -->
         <div class="content-wrapper">
             <div class="content-header">
                 <div class="container-fluid">
                     <h1 class="text-dark">Edit Reservation</h1>
                 </div>
             </div>
-            <div class="content">
+            <section class="content">
                 <div class="container-fluid">
-                    <div class="card card-primary">
+                    <div class="card">
                         <div class="card-body">
                             <form action="/reservations/edit/1" method="post">
-                                <!-- Room Number -->
                                 <div class="form-group">
                                     <label for="room_number">Room Number</label>
                                     <input type="text" class="form-control" id="room_number" name="room_number" value="101" required>
                                 </div>
-                                <!-- Reservation Type -->
                                 <div class="form-group">
                                     <label for="reservation_type">Reservation Type</label>
                                     <select class="form-control" id="reservation_type" name="reservation_type" required>
@@ -41,7 +38,6 @@
                                         <option value="どちらか">どちらか</option>
                                     </select>
                                 </div>
-                                <!-- Event -->
                                 <div class="form-group">
                                     <label for="event_id">Event</label>
                                     <select class="form-control" id="event_id" name="event_id" required>
@@ -49,17 +45,15 @@
                                         <option value="2">Elevator Maintenance</option>
                                     </select>
                                 </div>
-                                <!-- Submit Button -->
                                 <button type="submit" class="btn btn-primary">Save Changes</button>
-                                <a href="/demo.github.io/weing/reservation_calendar.html" class="btn btn-secondary">Cancel</a>
+                                <a href="/taiyo/reservation_calendar.html" class="btn btn-secondary">Cancel</a>
                             </form>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     </div>
-    <!-- AdminLTE JS -->
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
 </body>
 </html>

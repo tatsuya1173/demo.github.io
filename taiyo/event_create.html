@@ -8,51 +8,45 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        body {
-            background-color: #f4f6f9;
-        }
-    </style>
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
+        <!-- Sidebar -->
+        <!-- (同様にサイドメニューを追加) -->
+
+        <!-- Content Wrapper -->
         <div class="content-wrapper">
             <div class="content-header">
                 <div class="container-fluid">
                     <h1 class="text-dark">Create New Event</h1>
                 </div>
             </div>
-            <div class="content">
+            <section class="content">
                 <div class="container-fluid">
-                    <div class="card card-primary">
+                    <div class="card">
                         <div class="card-body">
                             <form action="/events/create" method="post">
-                                <!-- Event Name -->
                                 <div class="form-group">
                                     <label for="event_name">Event Name</label>
-                                    <input type="text" class="form-control" id="event_name" name="event_name" required placeholder="Enter event name">
+                                    <input type="text" class="form-control" id="event_name" name="event_name" required>
                                 </div>
-                                <!-- Start Date -->
                                 <div class="form-group">
                                     <label for="start_date">Start Date</label>
                                     <input type="date" class="form-control" id="start_date" name="start_date" required>
                                 </div>
-                                <!-- End Date -->
                                 <div class="form-group">
                                     <label for="end_date">End Date</label>
                                     <input type="date" class="form-control" id="end_date" name="end_date" required>
                                 </div>
-                                <!-- Submit -->
                                 <button type="submit" class="btn btn-primary">Create Event</button>
-                                <a href="/demo.github.io/taiyo/event_list.html" class="btn btn-secondary">Cancel</a>
+                                <a href="/taiyo/event_list.html" class="btn btn-secondary">Cancel</a>
                             </form>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     </div>
-    <!-- AdminLTE JS -->
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
 </body>
 </html>
